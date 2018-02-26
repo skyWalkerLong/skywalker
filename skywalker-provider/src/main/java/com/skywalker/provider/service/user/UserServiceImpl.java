@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
         userMapper.addUser(user);
     }
 
-    public List<UserVo> getAllUser() {
+    public List<User> getAllUser() {
 
         return userMapper.selectAllUser();
     }

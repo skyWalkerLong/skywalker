@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UserController {
 
     private static final Logger log = Logger.getLogger(UserController.class);
@@ -33,31 +34,17 @@ public class UserController {
     @RequestMapping(value="addUser",method= RequestMethod.POST)
     public String regist(User user) throws Exception {
         System.out.println("表单提交成功！"+" /用户名是"+user.getLoginname());
-//        user.setLoginname(request.getParameter("loginname"));
-//        user.setLoginpass(request.getParameter("loginpass"));
-//        user.setEmail(request.getParameter("email"));
         userService.addUser(user);
-        //request.setAttribute("code","success");
-        //request.setAttribute("msg","注册成功！");
-        // request.getRequestDispatcher("jsps/msg.jsp").forward(request,response);
-        //System.out.println("1");
-        // request.getRequestDispatcher("success.jsp").forward(request,response);
         return "success";
     }
 
-    @RequestMapping("/showUser")
-    public String showUser(HttpServletRequest request,Model model){
+    @ResponseBody
+    @RequestMapping(value = "/showUser" ,method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
+    public List<User> showUser(Model model) throws Exception{
         log.info("查询所有用户信息");
-        //List<UserVo> userList = userService.getAllUser();
-        List<UserVo> userList = new ArrayList<>();
-        UserVo userVo = new UserVo();
-        userVo.setUser_name("张三");
-        userVo.setId(1);
-        userVo.setUser_like("篮球");
-        userVo.setEmail("ok");
-        userList.add(userVo);
+        List<User> userList = userService.getAllUser();
         model.addAttribute("userList",userList);
-        return "showUser";
+        return userList;
     }
 
     @RequestMapping("addUserlike")

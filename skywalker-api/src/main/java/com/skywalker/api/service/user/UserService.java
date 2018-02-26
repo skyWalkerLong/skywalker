@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserService {
     void addUser(User user) throws Exception;
 
-    List<UserVo> getAllUser();
+    List<User> getAllUser();
 
     void addUserlike(UserLike userLike);
 }

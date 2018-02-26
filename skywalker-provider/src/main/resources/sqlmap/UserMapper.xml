@@ -31,12 +31,9 @@
 
     <select id="selectAllUser" resultMap="UserVoBaseMap">
         select
-        loginname,email,user_like
-        from user as u
-        left join
-        user_like a
-        on
-        u.loginname=a.user_name
+        id,uid,loginname
+        FROM
+        user
     </select>
 
     <sql id="Base_Column_List">

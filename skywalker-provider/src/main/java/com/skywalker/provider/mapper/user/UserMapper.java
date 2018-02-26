@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserMapper {
     void addUser(User user) throws Exception;
 
-    List<UserVo> selectAllUser();
+    List<User> selectAllUser();
 
     void addUserlike(UserLike userLike);
 }

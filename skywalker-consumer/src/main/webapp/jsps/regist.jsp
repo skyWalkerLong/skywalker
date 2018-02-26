@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="/addUser" method="post" id="registForm">
+    <form action="/user/addUser" method="post" id="registForm">
         <input type="hidden" name="mark" value="regist"/>
         <br>用户名： <input type="text" name="loginname" id="loginname"/></br>
         <br>密  码： &nbsp<input type="password" name="loginpass" id="loginpass"/></br>
