@@ -7,9 +7,11 @@ import com.skywalker.domain.user.UserVo;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.plugin.javascript.navig.JSObjectFactory;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +33,10 @@ public class UserController {
     private UserService userService;
 
     //属性名和前端name一一对应，如下配置可直接将前端数据映射进bean中。
-    @RequestMapping(value="addUser",method= RequestMethod.POST)
-    public String regist(User user) throws Exception {
-        System.out.println("表单提交成功！"+" /用户名是"+user.getLoginname());
-        userService.addUser(user);
+    @RequestMapping(value="/addUser",method= RequestMethod.POST,produces = "application/json;charset=UTF-8")
+    public String regist(@RequestBody String str) throws Exception {
+        System.out.println("表单提交成功！"+" /用户名是"+str);
+//        userService.addUser(user);
         return "success";
     }
 
