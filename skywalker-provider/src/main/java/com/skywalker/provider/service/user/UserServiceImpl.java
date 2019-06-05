@@ -8,8 +8,12 @@ import com.skywalker.provider.mapper.user.UserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author longchao
@@ -31,7 +35,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> getAllUser() {
-
         return userMapper.selectAllUser();
     }
 
