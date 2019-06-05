@@ -11,7 +11,7 @@
     <!-- 应用名 -->
     <dubbo:application name="dubbo-provider"/>
     <!-- 连接到哪个本地注册中心 -->
-    <dubbo:registry protocol="zookeeper" address="116.196.81.252:2181"/>
+    <dubbo:registry protocol="zookeeper" address="39.96.11.146:2181"/>
 
     <!-- 协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受  -->
     <dubbo:protocol name="dubbo" server="netty" port="20881" serialization="hessian2" />
